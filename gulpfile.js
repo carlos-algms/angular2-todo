@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var connect = require('gulp-connect');
 var rename = require('gulp-rename');
+var htmlmin = require('gulp-htmlmin');
 
 var ts = require('gulp-typescript');
 var tsProject = ts.createProject('tsconfig.json');
@@ -37,7 +38,7 @@ gulp.task('clean-serve', function() {
             .pipe( clean() );
 });
 
-
+//TODO implement open after serve
 gulp.task('connect-serve', function() {
   connect.server({
     port: 8000,
@@ -59,8 +60,8 @@ gulp.task('connect-serve', function() {
 });
 
 
+//TODO implement gulp-newer
 gulp.task('typescript-serve', function() {
-
   var tsResult = tsProject.src()
     .pipe(ts(tsProject));
 
@@ -72,6 +73,20 @@ gulp.task('typescript-serve', function() {
 
 gulp.task('html', function () {
   gulp.src('./app/*.html')
-    .pipe(connect.reload());
+      .pipe(connect.reload());
 });
 
+
+//TODO create a build process
+gulp.task('htmlmin', function() {
+  return gulp.src('app/**/*.html')
+            .pipe(htmlmin({collapseWhitespace: true}))
+            .pipe(gulp.dest('dist/'));
+});
+
+
+gulp.task('typescript-dist', function() {
+  var tsResult = tsProject.src().pipe(ts(tsProject));
+
+  return tsResult.js.pipe(gulp.dest('dist/'));
+});
