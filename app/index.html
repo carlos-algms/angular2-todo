@@ -18,16 +18,17 @@
 
   <!-- 2. Configure SystemJS -->
   <script>
+
     System.config({
       packages: {
-        app: {
+        scripts: {
           format: 'register',
           defaultExtension: 'js'
         }
       }
     });
 
-    System.import('app/main')
+    System.import('scripts/main')
       .then(null, console.error.bind(console));
   </script>
 
