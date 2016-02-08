@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var connect = require('gulp-connect');
+var open = require('gulp-open');
 var rename = require('gulp-rename');
 var htmlmin = require('gulp-htmlmin');
 
@@ -38,7 +39,7 @@ gulp.task('clean-serve', function() {
             .pipe( clean() );
 });
 
-//TODO implement open after serve
+
 gulp.task('connect-serve', function() {
   connect.server({
     port: 8000,
@@ -56,7 +57,7 @@ gulp.task('connect-serve', function() {
     }
   });
 
-
+  return gulp.src('').pipe( open({uri: 'http://localhost:8000'}) );
 });
 
 
