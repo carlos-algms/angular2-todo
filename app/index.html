@@ -8,18 +8,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link href="node_modules/materialize-css/dist/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+  <!-- build:css(.) styles/vendors.css -->
+    <link href="node_modules/materialize-css/dist/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!-- endbuild -->
 
-  <!-- 1. Load libraries -->
-  <!-- IE required polyfills, in this exact order -->
-  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <!-- build:js(.) scripts/polyfills.js -->
+    <!-- IE required polyfills, in this exact order -->
+    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/es6-shim/es6-shim.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
 
-  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="node_modules/systemjs/dist/system.src.js"></script>
-  <script src="node_modules/rxjs/bundles/Rx.js"></script>
-  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.js"></script>
+  <!-- endbuild -->
 
   <!-- 2. Configure SystemJS -->
   <script>
@@ -69,7 +73,10 @@
 
 <div style="display: none;">
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="node_modules/materialize-css/dist/js/materialize.js"></script>
+
+  <!-- build:js(.) scripts/vendors.js -->
+    <script src="node_modules/materialize-css/dist/js/materialize.js"></script>
+  <!-- endbuild -->
 </div>
 
 </body>
