@@ -78,6 +78,7 @@ gulp.task('html', function () {
 
 
 //TODO create a build process
+//TODO implement gulp-usemin
 gulp.task('htmlmin', function() {
   return gulp.src('app/**/*.html')
             .pipe(htmlmin({collapseWhitespace: true}))
