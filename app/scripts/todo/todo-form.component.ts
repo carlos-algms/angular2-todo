@@ -10,12 +10,12 @@ import {Todo} from './todo';
     <div class="row">
       <form class="col s12" *ngIf="active" (ngSubmit)="onSubmit()">
         <div class="row">
-          <div class="input-field col s8">
+          <div class="input-field col s9 m8">
             <input id="text" type="text" class="validate" [(ngModel)]="formModel.text" required />
             <label for="text">Description</label>
           </div>
-          <div class="input-field col s4">
-            <button type="submit" class="waves-effect waves-light btn">
+          <div class="input-field col s3 m4">
+            <button type="submit" class="waves-effect waves-light btn col s12">
               <i class="material-icons left">add</i>
               Insert
             </button>
