@@ -1,4 +1,4 @@
-import {Component, OnInit, View} from 'angular2/core';
+import {Component, View} from 'angular2/core';
 import {Todo} from './todo';
 import {TodoService} from './todo.service';
 import {TodoFormComponent} from './todo-form.component';
@@ -11,8 +11,8 @@ import {TodoFormComponent} from './todo-form.component';
 @View({
   template: `
     <todo-form></todo-form>
-    <ul class="collection">
-      <li class="collection-item" *ngFor="#item of todos">
+    <ul class="collection" *ngIf="todoService.todos && todoService.todos.length > 0">
+      <li class="collection-item" *ngFor="#item of todoService.todos">
         <div>
           {{ item.text }}
           <a href="#!" class="secondary-content">
@@ -25,13 +25,8 @@ import {TodoFormComponent} from './todo-form.component';
   directives: [TodoFormComponent]
 })
 
-export class TodoComponent implements OnInit {
-  public todos: Todo[];
+export class TodoComponent {
 
-  constructor(private _todoService: TodoService) { }
-
-  ngOnInit() {
-    this.todos = this._todoService.getAll();
-  }
+  constructor(public todoService: TodoService) { }
 
 }

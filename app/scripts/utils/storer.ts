@@ -1,6 +1,8 @@
-import {Observable} from 'rxjs/Rx';
+import {Observable, Subject} from 'rxjs/Rx';
 
 export class Storer<T> {
+
+  private subject = new Subject<T>();
 
   constructor(public index: string){}
 
@@ -19,19 +21,18 @@ export class Storer<T> {
     });
   }
 
-  public read(): Observable<T> {
-    return this._read().map<T>( json => {
-      if( json === null ) {
-        return null;
-      }
-
-      return Storer.convertToObject<T>(json);
+  public read(): Subject<T> {
+    this._read().subscribe( json => {
+      this.subject.next( json ? Storer.convertToObject<T>(json) : null );
     });
+
+    return this.subject;
   }
 
 
   public write(data: any) {
-    localStorage[this.index] = JSON.parse(data);
+    localStorage[this.index] = JSON.stringify(data);
+    this.read();
   }
 
 

@@ -6,26 +6,20 @@ import {Storer} from '../utils/storer';
 export class TodoService {
 
   private storage: Storer<Todo[]> = new Storer<Todo[]>('todo-items');
-  private todos: Todo[];
+  public todos: Todo[];
 
   constructor() {
-    this.storage.read().subscribe(todos =>  this.todos = todos || [] );
-
-    //let subscriber: any = this.http.get('https://api.github.com/users/carlos-algms')
-    //  .map( res => res.json() )
-    //  .subscribe( res => console.log('talvez?', res) );
-
+    this.storage.read().subscribe(todos =>  {
+      this.todos = todos || [];
+    });
   }
 
-
-  public getAll() : Todo[] {
-    return this.todos;
-  }
-
-  //TODO save localStorage
   public add(todo: Todo) : Todo {
     this.todos.push(todo);
     todo.id = this.todos.length;
+    this.storage.write(this.todos);
     return todo;
   }
+
+  //TODO implement done / undone on items
 }

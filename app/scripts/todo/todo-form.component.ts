@@ -41,7 +41,7 @@ export class TodoFormComponent implements OnInit {
     this._todoService.add(this.formModel);
     this.ngOnInit();
 
-    setTimeout(()=> this.active=true, 0);
+    setTimeout(()=> this.active = true, 0);
   }
 
 }
