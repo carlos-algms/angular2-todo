@@ -11,7 +11,7 @@ import {Todo} from './todo';
       <form class="col s12" *ngIf="active" (ngSubmit)="onSubmit()">
         <div class="row">
           <div class="input-field col s8">
-            <input id="text" type="text" class="validate" [(ngModel)]="formModel.text" />
+            <input id="text" type="text" class="validate" [(ngModel)]="formModel.text" required />
             <label for="text">Description</label>
           </div>
           <div class="input-field col s4">

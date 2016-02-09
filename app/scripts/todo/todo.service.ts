@@ -6,10 +6,10 @@ import {Observable} from 'rxjs/Rx';
 export class TodoService {
 
   private todos: Todo[] = [
-    new Todo(1, 'Testar 1'),
-    new Todo(2, 'Testar 2'),
-    new Todo(3, 'Testar 3'),
-    new Todo(4, 'Testar 4'),
+    new Todo(1, 'Test 1'),
+    new Todo(2, 'Test 2'),
+    new Todo(3, 'Test 3'),
+    new Todo(4, 'Test 4'),
   ];
 
 
