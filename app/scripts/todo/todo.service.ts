@@ -1,16 +1,21 @@
 import {Injectable} from 'angular2/core';
 import {Todo} from './todo';
-import {Observable} from 'rxjs/Rx';
+import {Storer} from '../utils/storer';
 
 @Injectable()
 export class TodoService {
 
-  private todos: Todo[] = [
-    new Todo(1, 'Test 1'),
-    new Todo(2, 'Test 2'),
-    new Todo(3, 'Test 3'),
-    new Todo(4, 'Test 4'),
-  ];
+  private storage: Storer<Todo[]> = new Storer<Todo[]>('todo-items');
+  private todos: Todo[];
+
+  constructor() {
+    this.storage.read().subscribe(todos =>  this.todos = todos || [] );
+
+    //let subscriber: any = this.http.get('https://api.github.com/users/carlos-algms')
+    //  .map( res => res.json() )
+    //  .subscribe( res => console.log('talvez?', res) );
+
+  }
 
 
   public getAll() : Todo[] {
