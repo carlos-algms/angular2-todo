@@ -116,7 +116,7 @@ gulp.task('typescript-dist', function() {
 
 
 gulp.task('copy-fonts', function () {
-  return gulp.src('node_modules/materialize-css/font/**/*', {base: 'node_modules/materialize-css/'})
+  return gulp.src('node_modules/materialize-css/font/**', {base: 'node_modules/materialize-css/'})
     .pipe(gulp.dest('dist/'));
 });
 
@@ -131,7 +131,7 @@ gulp.task('usemin', function() {
   return gulp.src('./app/index.html')
     .pipe(usemin({
       css: [ minifyCss, rev ],
-      js: [ uglify, rev ]
+      js: [ 'concat', rev ]
       //html: [ minifyHtml({ empty: true }) ],
       //inlinejs: [ uglify() ],
       //inlinecss: [ minifyCss(), 'concat' ]

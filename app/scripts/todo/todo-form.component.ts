@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {NgForm}    from 'angular2/common';
+import {NgForm, NgIf}    from 'angular2/common';
 
 import {TodoService} from './todo.service';
 import {Todo} from './todo';
