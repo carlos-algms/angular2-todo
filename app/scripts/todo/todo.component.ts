@@ -3,9 +3,11 @@ import {Todo} from './todo';
 import {TodoService} from './todo.service';
 import {TodoFormComponent} from './todo-form.component';
 
+import {AnalyticsDirective} from '../analytics.directive';
+
 @Component({
   selector: 'todo-list',
-  providers: [TodoService]
+  providers: [TodoService],
 })
 
 @View({
@@ -22,7 +24,7 @@ import {TodoFormComponent} from './todo-form.component';
       </li>
     </ul>
   `,
-  directives: [TodoFormComponent]
+  directives: [TodoFormComponent, AnalyticsDirective]
 })
 
 export class TodoComponent {
